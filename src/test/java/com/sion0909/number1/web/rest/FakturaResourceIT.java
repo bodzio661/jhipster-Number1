@@ -25,8 +25,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.sion0909.number1.domain.enumeration.Type;
-import com.sion0909.number1.domain.enumeration.Status;
-import com.sion0909.number1.domain.enumeration.Zaleglosc;
 /**
  * Integration tests for the {@link FakturaResource} REST controller.
  */
@@ -38,8 +36,8 @@ public class FakturaResourceIT {
     private static final String DEFAULT_NUMER_FAKTURY = "AAAAAAAAAA";
     private static final String UPDATED_NUMER_FAKTURY = "BBBBBBBBBB";
 
-    private static final Float DEFAULT_KWOTA_FAKTURY = 1F;
-    private static final Float UPDATED_KWOTA_FAKTURY = 2F;
+    private static final Long DEFAULT_KWOTA_FAKTURY = 1L;
+    private static final Long UPDATED_KWOTA_FAKTURY = 2L;
 
     private static final LocalDate DEFAULT_DATA_FAKTURY = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATA_FAKTURY = LocalDate.now(ZoneId.systemDefault());
@@ -47,11 +45,11 @@ public class FakturaResourceIT {
     private static final Type DEFAULT_TYP_FAKTURY = Type.Kosztowa;
     private static final Type UPDATED_TYP_FAKTURY = Type.Przychodowa;
 
-    private static final Status DEFAULT_STATUS_FAKTURY = Status.Zaplacone;
-    private static final Status UPDATED_STATUS_FAKTURY = Status.Nowe;
+    private static final Boolean DEFAULT_ZALEGLOSC_FAKTURY = false;
+    private static final Boolean UPDATED_ZALEGLOSC_FAKTURY = true;
 
-    private static final Zaleglosc DEFAULT_ZALEGLOSC_FAKTURY = Zaleglosc.OK;
-    private static final Zaleglosc UPDATED_ZALEGLOSC_FAKTURY = Zaleglosc.Zalegla;
+    private static final Boolean DEFAULT_STATUS_FAKTURY = false;
+    private static final Boolean UPDATED_STATUS_FAKTURY = true;
 
     @Autowired
     private FakturaRepository fakturaRepository;
@@ -79,8 +77,8 @@ public class FakturaResourceIT {
             .kwotaFaktury(DEFAULT_KWOTA_FAKTURY)
             .dataFaktury(DEFAULT_DATA_FAKTURY)
             .typFaktury(DEFAULT_TYP_FAKTURY)
-            .statusFaktury(DEFAULT_STATUS_FAKTURY)
-            .zalegloscFaktury(DEFAULT_ZALEGLOSC_FAKTURY);
+            .zalegloscFaktury(DEFAULT_ZALEGLOSC_FAKTURY)
+            .statusFaktury(DEFAULT_STATUS_FAKTURY);
         return faktura;
     }
     /**
@@ -95,8 +93,8 @@ public class FakturaResourceIT {
             .kwotaFaktury(UPDATED_KWOTA_FAKTURY)
             .dataFaktury(UPDATED_DATA_FAKTURY)
             .typFaktury(UPDATED_TYP_FAKTURY)
-            .statusFaktury(UPDATED_STATUS_FAKTURY)
-            .zalegloscFaktury(UPDATED_ZALEGLOSC_FAKTURY);
+            .zalegloscFaktury(UPDATED_ZALEGLOSC_FAKTURY)
+            .statusFaktury(UPDATED_STATUS_FAKTURY);
         return faktura;
     }
 
@@ -123,8 +121,8 @@ public class FakturaResourceIT {
         assertThat(testFaktura.getKwotaFaktury()).isEqualTo(DEFAULT_KWOTA_FAKTURY);
         assertThat(testFaktura.getDataFaktury()).isEqualTo(DEFAULT_DATA_FAKTURY);
         assertThat(testFaktura.getTypFaktury()).isEqualTo(DEFAULT_TYP_FAKTURY);
-        assertThat(testFaktura.getStatusFaktury()).isEqualTo(DEFAULT_STATUS_FAKTURY);
-        assertThat(testFaktura.getZalegloscFaktury()).isEqualTo(DEFAULT_ZALEGLOSC_FAKTURY);
+        assertThat(testFaktura.isZalegloscFaktury()).isEqualTo(DEFAULT_ZALEGLOSC_FAKTURY);
+        assertThat(testFaktura.isStatusFaktury()).isEqualTo(DEFAULT_STATUS_FAKTURY);
     }
 
     @Test
@@ -225,25 +223,6 @@ public class FakturaResourceIT {
 
     @Test
     @Transactional
-    public void checkStatusFakturyIsRequired() throws Exception {
-        int databaseSizeBeforeTest = fakturaRepository.findAll().size();
-        // set the field null
-        faktura.setStatusFaktury(null);
-
-        // Create the Faktura, which fails.
-
-
-        restFakturaMockMvc.perform(post("/api/fakturas")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(faktura)))
-            .andExpect(status().isBadRequest());
-
-        List<Faktura> fakturaList = fakturaRepository.findAll();
-        assertThat(fakturaList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllFakturas() throws Exception {
         // Initialize the database
         fakturaRepository.saveAndFlush(faktura);
@@ -254,11 +233,11 @@ public class FakturaResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(faktura.getId().intValue())))
             .andExpect(jsonPath("$.[*].numerFaktury").value(hasItem(DEFAULT_NUMER_FAKTURY)))
-            .andExpect(jsonPath("$.[*].kwotaFaktury").value(hasItem(DEFAULT_KWOTA_FAKTURY.doubleValue())))
+            .andExpect(jsonPath("$.[*].kwotaFaktury").value(hasItem(DEFAULT_KWOTA_FAKTURY.intValue())))
             .andExpect(jsonPath("$.[*].dataFaktury").value(hasItem(DEFAULT_DATA_FAKTURY.toString())))
             .andExpect(jsonPath("$.[*].typFaktury").value(hasItem(DEFAULT_TYP_FAKTURY.toString())))
-            .andExpect(jsonPath("$.[*].statusFaktury").value(hasItem(DEFAULT_STATUS_FAKTURY.toString())))
-            .andExpect(jsonPath("$.[*].zalegloscFaktury").value(hasItem(DEFAULT_ZALEGLOSC_FAKTURY.toString())));
+            .andExpect(jsonPath("$.[*].zalegloscFaktury").value(hasItem(DEFAULT_ZALEGLOSC_FAKTURY.booleanValue())))
+            .andExpect(jsonPath("$.[*].statusFaktury").value(hasItem(DEFAULT_STATUS_FAKTURY.booleanValue())));
     }
     
     @Test
@@ -273,11 +252,11 @@ public class FakturaResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(faktura.getId().intValue()))
             .andExpect(jsonPath("$.numerFaktury").value(DEFAULT_NUMER_FAKTURY))
-            .andExpect(jsonPath("$.kwotaFaktury").value(DEFAULT_KWOTA_FAKTURY.doubleValue()))
+            .andExpect(jsonPath("$.kwotaFaktury").value(DEFAULT_KWOTA_FAKTURY.intValue()))
             .andExpect(jsonPath("$.dataFaktury").value(DEFAULT_DATA_FAKTURY.toString()))
             .andExpect(jsonPath("$.typFaktury").value(DEFAULT_TYP_FAKTURY.toString()))
-            .andExpect(jsonPath("$.statusFaktury").value(DEFAULT_STATUS_FAKTURY.toString()))
-            .andExpect(jsonPath("$.zalegloscFaktury").value(DEFAULT_ZALEGLOSC_FAKTURY.toString()));
+            .andExpect(jsonPath("$.zalegloscFaktury").value(DEFAULT_ZALEGLOSC_FAKTURY.booleanValue()))
+            .andExpect(jsonPath("$.statusFaktury").value(DEFAULT_STATUS_FAKTURY.booleanValue()));
     }
     @Test
     @Transactional
@@ -304,8 +283,8 @@ public class FakturaResourceIT {
             .kwotaFaktury(UPDATED_KWOTA_FAKTURY)
             .dataFaktury(UPDATED_DATA_FAKTURY)
             .typFaktury(UPDATED_TYP_FAKTURY)
-            .statusFaktury(UPDATED_STATUS_FAKTURY)
-            .zalegloscFaktury(UPDATED_ZALEGLOSC_FAKTURY);
+            .zalegloscFaktury(UPDATED_ZALEGLOSC_FAKTURY)
+            .statusFaktury(UPDATED_STATUS_FAKTURY);
 
         restFakturaMockMvc.perform(put("/api/fakturas")
             .contentType(MediaType.APPLICATION_JSON)
@@ -320,8 +299,8 @@ public class FakturaResourceIT {
         assertThat(testFaktura.getKwotaFaktury()).isEqualTo(UPDATED_KWOTA_FAKTURY);
         assertThat(testFaktura.getDataFaktury()).isEqualTo(UPDATED_DATA_FAKTURY);
         assertThat(testFaktura.getTypFaktury()).isEqualTo(UPDATED_TYP_FAKTURY);
-        assertThat(testFaktura.getStatusFaktury()).isEqualTo(UPDATED_STATUS_FAKTURY);
-        assertThat(testFaktura.getZalegloscFaktury()).isEqualTo(UPDATED_ZALEGLOSC_FAKTURY);
+        assertThat(testFaktura.isZalegloscFaktury()).isEqualTo(UPDATED_ZALEGLOSC_FAKTURY);
+        assertThat(testFaktura.isStatusFaktury()).isEqualTo(UPDATED_STATUS_FAKTURY);
     }
 
     @Test

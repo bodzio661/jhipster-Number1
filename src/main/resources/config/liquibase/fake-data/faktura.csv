@@ -1,11 +1,11 @@
-id;numer_faktury;kwota_faktury;data_faktury;typ_faktury;status_faktury;zaleglosc_faktury
-1;Directives parse open-source;17140;2020-09-01;Przychodowa;Nowe;Zalegla
-2;Stravenue silver Reunion;84673;2020-09-02;Przychodowa;Nowe;Zalegla
-3;Direct green;49771;2020-09-02;Przychodowa;Nowe;OK
-4;turquoise Producer PCI;7130;2020-09-02;Kosztowa;Nowe;OK
-5;Computers;98305;2020-09-01;Kosztowa;Nowe;OK
-6;neural task-force Incredible;15469;2020-09-01;Kosztowa;Zaplacone;OK
-7;Tasty;44993;2020-09-02;Kosztowa;Nowe;Zalegla
-8;brand;92681;2020-09-02;Kosztowa;Zaplacone;OK
-9;needs-based;71242;2020-09-01;Przychodowa;Nowe;Zalegla
-10;Ergonomic Fiji;68369;2020-09-01;Przychodowa;Nowe;OK
+id;numer_faktury;kwota_faktury;data_faktury;typ_faktury;zaleglosc_faktury;status_faktury
+1;Directives parse open-source;17140;2020-09-01;Przychodowa;false;true
+2;leverage;68998;2020-09-02;Przychodowa;false;true
+3;bus out-of-the-box;52727;2020-09-02;Przychodowa;true;false
+4;schemas efficient;375;2020-09-01;Kosztowa;false;false
+5;payment;38772;2020-09-01;Przychodowa;false;false
+6;plug-and-play turquoise Producer;87912;2020-09-02;Kosztowa;true;false
+7;Keyboard Tasty Frozen Ball;89167;2020-09-01;Kosztowa;false;false
+8;Lakes Metrics quantifying;4836;2020-09-02;Kosztowa;true;true
+9;Mississippi transmitter virtual;93672;2020-09-02;Przychodowa;false;true
+10;Accountability maximize;29394;2020-09-01;Przychodowa;true;false

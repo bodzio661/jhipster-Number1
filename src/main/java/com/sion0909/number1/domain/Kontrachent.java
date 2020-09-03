@@ -26,14 +26,11 @@ public class Kontrachent implements Serializable {
     @Column(name = "nazwa_kontrachenta")
     private String nazwaKontrachenta;
 
-    @Column(name = "email_kontrachenta")
-    private String emailKontrachenta;
-
-    @Column(name = "numer_kontrachenta")
-    private String numerKontrachenta;
-
     @Column(name = "termin_kontrachenta")
     private Integer terminKontrachenta;
+
+    @Column(name = "typ_kontrachenta")
+    private Boolean typKontrachenta;
 
     @OneToMany(mappedBy = "kontrachent")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -61,32 +58,6 @@ public class Kontrachent implements Serializable {
         this.nazwaKontrachenta = nazwaKontrachenta;
     }
 
-    public String getEmailKontrachenta() {
-        return emailKontrachenta;
-    }
-
-    public Kontrachent emailKontrachenta(String emailKontrachenta) {
-        this.emailKontrachenta = emailKontrachenta;
-        return this;
-    }
-
-    public void setEmailKontrachenta(String emailKontrachenta) {
-        this.emailKontrachenta = emailKontrachenta;
-    }
-
-    public String getNumerKontrachenta() {
-        return numerKontrachenta;
-    }
-
-    public Kontrachent numerKontrachenta(String numerKontrachenta) {
-        this.numerKontrachenta = numerKontrachenta;
-        return this;
-    }
-
-    public void setNumerKontrachenta(String numerKontrachenta) {
-        this.numerKontrachenta = numerKontrachenta;
-    }
-
     public Integer getTerminKontrachenta() {
         return terminKontrachenta;
     }
@@ -98,6 +69,19 @@ public class Kontrachent implements Serializable {
 
     public void setTerminKontrachenta(Integer terminKontrachenta) {
         this.terminKontrachenta = terminKontrachenta;
+    }
+
+    public Boolean isTypKontrachenta() {
+        return typKontrachenta;
+    }
+
+    public Kontrachent typKontrachenta(Boolean typKontrachenta) {
+        this.typKontrachenta = typKontrachenta;
+        return this;
+    }
+
+    public void setTypKontrachenta(Boolean typKontrachenta) {
+        this.typKontrachenta = typKontrachenta;
     }
 
     public Set<Faktura> getFakturas() {
@@ -148,9 +132,8 @@ public class Kontrachent implements Serializable {
         return "Kontrachent{" +
             "id=" + getId() +
             ", nazwaKontrachenta='" + getNazwaKontrachenta() + "'" +
-            ", emailKontrachenta='" + getEmailKontrachenta() + "'" +
-            ", numerKontrachenta='" + getNumerKontrachenta() + "'" +
             ", terminKontrachenta=" + getTerminKontrachenta() +
+            ", typKontrachenta='" + isTypKontrachenta() + "'" +
             "}";
     }
 }

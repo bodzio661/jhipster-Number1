@@ -24,9 +24,8 @@
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="nazwaKontrachenta"><span jhiTranslate="number1App.kontrachent.nazwaKontrachenta">Nazwa Kontrachenta</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="emailKontrachenta"><span jhiTranslate="number1App.kontrachent.emailKontrachenta">Email Kontrachenta</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="numerKontrachenta"><span jhiTranslate="number1App.kontrachent.numerKontrachenta">Numer Kontrachenta</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="terminKontrachenta"><span jhiTranslate="number1App.kontrachent.terminKontrachenta">Termin Kontrachenta</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="typKontrachenta"><span jhiTranslate="number1App.kontrachent.typKontrachenta">Typ Kontrachenta</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,9 +33,8 @@
                 <tr *ngFor="let kontrachent of kontrachents ;trackBy: trackId">
                     <td><a [routerLink]="['/kontrachent', kontrachent.id, 'view']">{{ kontrachent.id }}</a></td>
                     <td>{{ kontrachent.nazwaKontrachenta }}</td>
-                    <td>{{ kontrachent.emailKontrachenta }}</td>
-                    <td>{{ kontrachent.numerKontrachenta }}</td>
                     <td>{{ kontrachent.terminKontrachenta }}</td>
+                    <td>{{ kontrachent.typKontrachenta }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

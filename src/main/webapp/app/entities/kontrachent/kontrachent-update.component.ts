@@ -18,9 +18,8 @@ export class KontrachentUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nazwaKontrachenta: [],
-    emailKontrachenta: [],
-    numerKontrachenta: [],
     terminKontrachenta: [],
+    typKontrachenta: [],
   });
 
   constructor(protected kontrachentService: KontrachentService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -35,9 +34,8 @@ export class KontrachentUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: kontrachent.id,
       nazwaKontrachenta: kontrachent.nazwaKontrachenta,
-      emailKontrachenta: kontrachent.emailKontrachenta,
-      numerKontrachenta: kontrachent.numerKontrachenta,
       terminKontrachenta: kontrachent.terminKontrachenta,
+      typKontrachenta: kontrachent.typKontrachenta,
     });
   }
 
@@ -60,9 +58,8 @@ export class KontrachentUpdateComponent implements OnInit {
       ...new Kontrachent(),
       id: this.editForm.get(['id'])!.value,
       nazwaKontrachenta: this.editForm.get(['nazwaKontrachenta'])!.value,
-      emailKontrachenta: this.editForm.get(['emailKontrachenta'])!.value,
-      numerKontrachenta: this.editForm.get(['numerKontrachenta'])!.value,
       terminKontrachenta: this.editForm.get(['terminKontrachenta'])!.value,
+      typKontrachenta: this.editForm.get(['typKontrachenta'])!.value,
     };
   }
 

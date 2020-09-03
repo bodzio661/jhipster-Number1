@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(KontrachentService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Kontrachent(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0);
+      elemDefault = new Kontrachent(0, 'AAAAAAA', 0, false);
     });
 
     describe('Service methods', () => {
@@ -55,9 +55,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nazwaKontrachenta: 'BBBBBB',
-            emailKontrachenta: 'BBBBBB',
-            numerKontrachenta: 'BBBBBB',
             terminKontrachenta: 1,
+            typKontrachenta: true,
           },
           elemDefault
         );
@@ -75,9 +74,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nazwaKontrachenta: 'BBBBBB',
-            emailKontrachenta: 'BBBBBB',
-            numerKontrachenta: 'BBBBBB',
             terminKontrachenta: 1,
+            typKontrachenta: true,
           },
           elemDefault
         );

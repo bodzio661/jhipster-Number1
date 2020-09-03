@@ -27,8 +27,8 @@
                     <th scope="col"  jhiSortBy="kwotaFaktury"><span jhiTranslate="number1App.faktura.kwotaFaktury">Kwota Faktury</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dataFaktury"><span jhiTranslate="number1App.faktura.dataFaktury">Data Faktury</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="typFaktury"><span jhiTranslate="number1App.faktura.typFaktury">Typ Faktury</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="statusFaktury"><span jhiTranslate="number1App.faktura.statusFaktury">Status Faktury</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="zalegloscFaktury"><span jhiTranslate="number1App.faktura.zalegloscFaktury">Zaleglosc Faktury</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="statusFaktury"><span jhiTranslate="number1App.faktura.statusFaktury">Status Faktury</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="kontrachent.id"><span jhiTranslate="number1App.faktura.kontrachent">Kontrachent</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -40,11 +40,11 @@
                     <td>{{ faktura.kwotaFaktury }}</td>
                     <td>{{ faktura.dataFaktury | date:'mediumDate' }}</td>
                     <td jhiTranslate="{{ 'number1App.Type.' + faktura.typFaktury }}">{{ faktura.typFaktury }}</td>
-                    <td jhiTranslate="{{ 'number1App.Status.' + faktura.statusFaktury }}">{{ faktura.statusFaktury }}</td>
-                    <td jhiTranslate="{{ 'number1App.Zaleglosc.' + faktura.zalegloscFaktury }}">{{ faktura.zalegloscFaktury }}</td>
+                    <td>{{ faktura.zalegloscFaktury }}</td>
+                    <td>{{ faktura.statusFaktury }}</td>
                     <td>
                         <div *ngIf="faktura.kontrachent">
-                            <a [routerLink]="['/kontrachent', faktura.kontrachent?.id, 'view']" >{{ faktura.kontrachent?.nazwaKontrachenta }}</a>
+                            <a [routerLink]="['/kontrachent', faktura.kontrachent?.id, 'view']" >{{ faktura.kontrachent?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">
@@ -71,12 +71,6 @@
                         </div>
                     </td>
                 </tr>
-                <tfoot>
-                    <tr>
-                      <td>Suma</td>
-                      <td>{{total}}</td>
-                    </tr>
-                  </tfoot>
             </tbody>
         </table>
     </div>

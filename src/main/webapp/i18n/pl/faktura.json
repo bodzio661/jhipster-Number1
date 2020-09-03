@@ -2,26 +2,26 @@
   "number1App": {
     "faktura": {
       "home": {
-        "title": "Faktury",
-        "createLabel": "Dodaj fakturę",
-        "createOrEditLabel": "Dodaj lub edytuj fakturę",
-        "notFound": "Brak faktur"
+        "title": "Faktura",
+        "createLabel": "Dodaj Faktura",
+        "createOrEditLabel": "Dodaj lub edytuj: Faktura",
+        "notFound": "No Fakturas found"
       },
-      "created": "Utworzono fakturę z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono fakturę z identyfikatorem {{ param }}",
-      "deleted": "Usunięto fakturę z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Faktura z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Faktura z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Faktura z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć fakturę {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Faktura {{ id }}?"
       },
       "detail": {
-        "title": "Faktura numer: "
+        "title": "Faktura"
       },
-      "numerFaktury": "Numer faktury: ",
-      "kwotaFaktury": "Kwota: ",
-      "dataFaktury": "Data płatności: ",
-      "typFaktury": "Typ faktury (przychodowa, kosztowa): ",
-      "statusFaktury": "Status faktury",
-      "zalegloscFaktury": "Faktura zaległa: ",
+      "numerFaktury": "Numer Faktury",
+      "kwotaFaktury": "Kwota Faktury",
+      "dataFaktury": "Data Faktury",
+      "typFaktury": "Typ Faktury",
+      "zalegloscFaktury": "Zaleglosc Faktury",
+      "statusFaktury": "Status Faktury",
       "kontrachent": "Kontrachent"
     }
   }

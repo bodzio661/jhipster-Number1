@@ -19,13 +19,10 @@
             <column name="nazwa_kontrachenta" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="email_kontrachenta" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="numer_kontrachenta" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="termin_kontrachenta" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="typ_kontrachenta" type="boolean">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -52,9 +49,8 @@
                   tableName="kontrachent">
             <column name="id" type="numeric"/>
             <column name="nazwa_kontrachenta" type="string"/>
-            <column name="email_kontrachenta" type="string"/>
-            <column name="numer_kontrachenta" type="string"/>
             <column name="termin_kontrachenta" type="numeric"/>
+            <column name="typ_kontrachenta" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
