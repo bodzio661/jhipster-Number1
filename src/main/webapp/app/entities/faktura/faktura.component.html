@@ -44,7 +44,7 @@
                     <td jhiTranslate="{{ 'number1App.Zaleglosc.' + faktura.zalegloscFaktury }}">{{ faktura.zalegloscFaktury }}</td>
                     <td>
                         <div *ngIf="faktura.kontrachent">
-                            <a [routerLink]="['/kontrachent', faktura.kontrachent?.id, 'view']" >{{ faktura.kontrachent?.id }}</a>
+                            <a [routerLink]="['/kontrachent', faktura.kontrachent?.id, 'view']" >{{ faktura.kontrachent?.nazwaKontrachenta }}</a>
                         </div>
                     </td>
                     <td class="text-right">
@@ -71,6 +71,12 @@
                         </div>
                     </td>
                 </tr>
+                <tfoot>
+                    <tr>
+                      <td>Suma</td>
+                      <td>{{total}}</td>
+                    </tr>
+                  </tfoot>
             </tbody>
         </table>
     </div>

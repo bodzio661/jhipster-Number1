@@ -36,7 +36,16 @@
     "dtoSuffix": "DTO",
     "otherModules": [],
     "blueprints": [],
-    "prettierJava": true
+    "prettierJava": true,
+    "aws": {
+      "applicationName": "number-1",
+      "environmentName": "number-1-env",
+      "bucketName": "number-1",
+      "instanceType": "t2.micro",
+      "awsRegion": "eu-central-1",
+      "dbName": "Number1",
+      "dbInstanceClass": "db.t2.micro"
+    }
   },
   "git-provider": "GitHub",
   "git-company": "bodzio661",

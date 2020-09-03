@@ -19,6 +19,7 @@ export class FakturaComponent implements OnInit, OnDestroy {
   fakturas?: IFaktura[];
   eventSubscriber?: Subscription;
   totalItems = 0;
+  total = 0;
   itemsPerPage = ITEMS_PER_PAGE;
   page!: number;
   predicate!: string;

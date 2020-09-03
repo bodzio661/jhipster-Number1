@@ -1,12 +1,12 @@
 {
   "global": {
-    "title": "Number1",
+    "title": "Fakturobot",
     "browsehappy": "Używasz <strong>przestarzałej</strong> przeglądarki. Proszę <a href=\"http://browsehappy.com/\">uaktualnij swoją przeglądarkę</a> aby poprawić wrażenia z użytkowania tej aplikacji.",
     "menu": {
       "home": "Strona domowa",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Encje",
+        "main": "Menu",
         "faktura": "Faktura",
         "kontrachent": "Kontrachent",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
@@ -137,5 +137,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "To jest stopka"
+  "footer": "Made by sion0909"
 }

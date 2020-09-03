@@ -95,7 +95,7 @@
                     <label class="form-control-label" jhiTranslate="number1App.faktura.kontrachent" for="field_kontrachent">Kontrachent</label>
                     <select class="form-control" id="field_kontrachent" name="kontrachent" formControlName="kontrachent">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="kontrachentOption.id === editForm.get('kontrachent')!.value?.id ? editForm.get('kontrachent')!.value : kontrachentOption" *ngFor="let kontrachentOption of kontrachents; trackBy: trackById">{{ kontrachentOption.id }}</option>
+                        <option [ngValue]="kontrachentOption.id === editForm.get('kontrachent')!.value?.id ? editForm.get('kontrachent')!.value : kontrachentOption" *ngFor="let kontrachentOption of kontrachents; trackBy: trackById">{{ kontrachentOption.nazwaKontrachenta }}</option>
                     </select>
                 </div>
             </div>

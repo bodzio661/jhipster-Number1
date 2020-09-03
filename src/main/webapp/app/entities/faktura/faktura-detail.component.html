@@ -35,7 +35,7 @@
                 <dt><span jhiTranslate="number1App.faktura.kontrachent">Kontrachent</span></dt>
                 <dd>
                     <div *ngIf="faktura.kontrachent">
-                        <a [routerLink]="['/kontrachent', faktura.kontrachent?.id, 'view']">{{ faktura.kontrachent?.id }}</a>
+                        <a [routerLink]="['/kontrachent', faktura.kontrachent?.id, 'view']">{{ faktura.kontrachent?.nazwaKontrachenta }}</a>
                     </div>
                 </dd>
             </dl>
