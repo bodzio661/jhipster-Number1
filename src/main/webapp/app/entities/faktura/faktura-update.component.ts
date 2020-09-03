@@ -25,8 +25,8 @@ export class FakturaUpdateComponent implements OnInit {
     kwotaFaktury: [null, [Validators.required]],
     dataFaktury: [null, [Validators.required]],
     typFaktury: [null, [Validators.required]],
-    statusFaktury: [null, [Validators.required]],
     zalegloscFaktury: [],
+    statusFaktury: [],
     kontrachent: [],
   });
 
@@ -52,8 +52,8 @@ export class FakturaUpdateComponent implements OnInit {
       kwotaFaktury: faktura.kwotaFaktury,
       dataFaktury: faktura.dataFaktury,
       typFaktury: faktura.typFaktury,
-      statusFaktury: faktura.statusFaktury,
       zalegloscFaktury: faktura.zalegloscFaktury,
+      statusFaktury: faktura.statusFaktury,
       kontrachent: faktura.kontrachent,
     });
   }
@@ -80,8 +80,8 @@ export class FakturaUpdateComponent implements OnInit {
       kwotaFaktury: this.editForm.get(['kwotaFaktury'])!.value,
       dataFaktury: this.editForm.get(['dataFaktury'])!.value,
       typFaktury: this.editForm.get(['typFaktury'])!.value,
-      statusFaktury: this.editForm.get(['statusFaktury'])!.value,
       zalegloscFaktury: this.editForm.get(['zalegloscFaktury'])!.value,
+      statusFaktury: this.editForm.get(['statusFaktury'])!.value,
       kontrachent: this.editForm.get(['kontrachent'])!.value,
     };
   }

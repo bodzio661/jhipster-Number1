@@ -2,24 +2,23 @@
   "number1App": {
     "kontrachent": {
       "home": {
-        "title": "Kontrachenci",
-        "createLabel": "Dodaj kontrachenta",
-        "createOrEditLabel": "Dodaj lub edytuj kontrachenta",
-        "notFound": "Brak kontrachentów"
+        "title": "Kontrachent",
+        "createLabel": "Dodaj Kontrachent",
+        "createOrEditLabel": "Dodaj lub edytuj: Kontrachent",
+        "notFound": "No Kontrachents found"
       },
-      "created": "Utworzono kontrachenta z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono kontrachenta z identyfikatorem {{ param }}",
-      "deleted": "Usunięto kontrachenta z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Kontrachent z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Kontrachent z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Kontrachent z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć kontrachenta {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Kontrachent {{ id }}?"
       },
       "detail": {
-        "title": "Kontrachent: "
+        "title": "Kontrachent"
       },
-      "nazwaKontrachenta": "Nazwa: ",
-      "emailKontrachenta": "Email: ",
-      "numerKontrachenta": "Numer telefonu: ",
-      "terminKontrachenta": "Termin (ilość dni): ",
+      "nazwaKontrachenta": "Nazwa Kontrachenta",
+      "terminKontrachenta": "Termin Kontrachenta",
+      "typKontrachenta": "Typ Kontrachenta",
       "faktura": "Faktura"
     }
   }

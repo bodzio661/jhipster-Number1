@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="kontrachent">
-            <h2><span jhiTranslate="number1App.kontrachent.detail.title">Kontrachent: </span> {{ kontrachent.nazwaKontrachenta }}</h2>
+            <h2><span jhiTranslate="number1App.kontrachent.detail.title">Kontrachent</span> {{ kontrachent.id }}</h2>
 
             <hr>
 
@@ -12,17 +12,13 @@
                 <dd>
                     <span>{{ kontrachent.nazwaKontrachenta }}</span>
                 </dd>
-                <dt><span jhiTranslate="number1App.kontrachent.emailKontrachenta">Email Kontrachenta</span></dt>
-                <dd>
-                    <span>{{ kontrachent.emailKontrachenta }}</span>
-                </dd>
-                <dt><span jhiTranslate="number1App.kontrachent.numerKontrachenta">Numer Kontrachenta</span></dt>
-                <dd>
-                    <span>{{ kontrachent.numerKontrachenta }}</span>
-                </dd>
                 <dt><span jhiTranslate="number1App.kontrachent.terminKontrachenta">Termin Kontrachenta</span></dt>
                 <dd>
                     <span>{{ kontrachent.terminKontrachenta }}</span>
+                </dd>
+                <dt><span jhiTranslate="number1App.kontrachent.typKontrachenta">Typ Kontrachenta</span></dt>
+                <dd>
+                    <span>{{ kontrachent.typKontrachenta }}</span>
                 </dd>
             </dl>
 

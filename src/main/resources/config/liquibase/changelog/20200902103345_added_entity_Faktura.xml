@@ -19,7 +19,7 @@
             <column name="numer_faktury" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="kwota_faktury" type="${floatType}">
+            <column name="kwota_faktury" type="bigint">
                 <constraints nullable="false" />
             </column>
             <column name="data_faktury" type="date">
@@ -28,10 +28,10 @@
             <column name="typ_faktury" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="status_faktury" type="varchar(255)">
-                <constraints nullable="false" />
+            <column name="zaleglosc_faktury" type="boolean">
+                <constraints nullable="true" />
             </column>
-            <column name="zaleglosc_faktury" type="varchar(255)">
+            <column name="status_faktury" type="boolean">
                 <constraints nullable="true" />
             </column>
             <column name="kontrachent_id" type="bigint">
@@ -64,8 +64,8 @@
             <column name="kwota_faktury" type="numeric"/>
             <column name="data_faktury" type="date"/>
             <column name="typ_faktury" type="string"/>
-            <column name="status_faktury" type="string"/>
-            <column name="zaleglosc_faktury" type="string"/>
+            <column name="zaleglosc_faktury" type="boolean"/>
+            <column name="status_faktury" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

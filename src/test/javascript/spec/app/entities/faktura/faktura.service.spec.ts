@@ -5,8 +5,6 @@ import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { FakturaService } from 'app/entities/faktura/faktura.service';
 import { IFaktura, Faktura } from 'app/shared/model/faktura.model';
 import { Type } from 'app/shared/model/enumerations/type.model';
-import { Status } from 'app/shared/model/enumerations/status.model';
-import { Zaleglosc } from 'app/shared/model/enumerations/zaleglosc.model';
 
 describe('Service Tests', () => {
   describe('Faktura Service', () => {
@@ -27,7 +25,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Faktura(0, 'AAAAAAA', 0, currentDate, Type.Kosztowa, Status.Zaplacone, Zaleglosc.OK);
+      elemDefault = new Faktura(0, 'AAAAAAA', 0, currentDate, Type.Kosztowa, false, false);
     });
 
     describe('Service methods', () => {
@@ -76,8 +74,8 @@ describe('Service Tests', () => {
             kwotaFaktury: 1,
             dataFaktury: currentDate.format(DATE_FORMAT),
             typFaktury: 'BBBBBB',
-            statusFaktury: 'BBBBBB',
-            zalegloscFaktury: 'BBBBBB',
+            zalegloscFaktury: true,
+            statusFaktury: true,
           },
           elemDefault
         );
@@ -103,8 +101,8 @@ describe('Service Tests', () => {
             kwotaFaktury: 1,
             dataFaktury: currentDate.format(DATE_FORMAT),
             typFaktury: 'BBBBBB',
-            statusFaktury: 'BBBBBB',
-            zalegloscFaktury: 'BBBBBB',
+            zalegloscFaktury: true,
+            statusFaktury: true,
           },
           elemDefault
         );

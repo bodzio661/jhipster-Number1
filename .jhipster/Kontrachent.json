@@ -6,16 +6,12 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "emailKontrachenta",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "numerKontrachenta",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "terminKontrachenta",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "typKontrachenta",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [

@@ -33,14 +33,11 @@ public class KontrachentResourceIT {
     private static final String DEFAULT_NAZWA_KONTRACHENTA = "AAAAAAAAAA";
     private static final String UPDATED_NAZWA_KONTRACHENTA = "BBBBBBBBBB";
 
-    private static final String DEFAULT_EMAIL_KONTRACHENTA = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL_KONTRACHENTA = "BBBBBBBBBB";
-
-    private static final String DEFAULT_NUMER_KONTRACHENTA = "AAAAAAAAAA";
-    private static final String UPDATED_NUMER_KONTRACHENTA = "BBBBBBBBBB";
-
     private static final Integer DEFAULT_TERMIN_KONTRACHENTA = 1;
     private static final Integer UPDATED_TERMIN_KONTRACHENTA = 2;
+
+    private static final Boolean DEFAULT_TYP_KONTRACHENTA = false;
+    private static final Boolean UPDATED_TYP_KONTRACHENTA = true;
 
     @Autowired
     private KontrachentRepository kontrachentRepository;
@@ -65,9 +62,8 @@ public class KontrachentResourceIT {
     public static Kontrachent createEntity(EntityManager em) {
         Kontrachent kontrachent = new Kontrachent()
             .nazwaKontrachenta(DEFAULT_NAZWA_KONTRACHENTA)
-            .emailKontrachenta(DEFAULT_EMAIL_KONTRACHENTA)
-            .numerKontrachenta(DEFAULT_NUMER_KONTRACHENTA)
-            .terminKontrachenta(DEFAULT_TERMIN_KONTRACHENTA);
+            .terminKontrachenta(DEFAULT_TERMIN_KONTRACHENTA)
+            .typKontrachenta(DEFAULT_TYP_KONTRACHENTA);
         return kontrachent;
     }
     /**
@@ -79,9 +75,8 @@ public class KontrachentResourceIT {
     public static Kontrachent createUpdatedEntity(EntityManager em) {
         Kontrachent kontrachent = new Kontrachent()
             .nazwaKontrachenta(UPDATED_NAZWA_KONTRACHENTA)
-            .emailKontrachenta(UPDATED_EMAIL_KONTRACHENTA)
-            .numerKontrachenta(UPDATED_NUMER_KONTRACHENTA)
-            .terminKontrachenta(UPDATED_TERMIN_KONTRACHENTA);
+            .terminKontrachenta(UPDATED_TERMIN_KONTRACHENTA)
+            .typKontrachenta(UPDATED_TYP_KONTRACHENTA);
         return kontrachent;
     }
 
@@ -105,9 +100,8 @@ public class KontrachentResourceIT {
         assertThat(kontrachentList).hasSize(databaseSizeBeforeCreate + 1);
         Kontrachent testKontrachent = kontrachentList.get(kontrachentList.size() - 1);
         assertThat(testKontrachent.getNazwaKontrachenta()).isEqualTo(DEFAULT_NAZWA_KONTRACHENTA);
-        assertThat(testKontrachent.getEmailKontrachenta()).isEqualTo(DEFAULT_EMAIL_KONTRACHENTA);
-        assertThat(testKontrachent.getNumerKontrachenta()).isEqualTo(DEFAULT_NUMER_KONTRACHENTA);
         assertThat(testKontrachent.getTerminKontrachenta()).isEqualTo(DEFAULT_TERMIN_KONTRACHENTA);
+        assertThat(testKontrachent.isTypKontrachenta()).isEqualTo(DEFAULT_TYP_KONTRACHENTA);
     }
 
     @Test
@@ -142,9 +136,8 @@ public class KontrachentResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(kontrachent.getId().intValue())))
             .andExpect(jsonPath("$.[*].nazwaKontrachenta").value(hasItem(DEFAULT_NAZWA_KONTRACHENTA)))
-            .andExpect(jsonPath("$.[*].emailKontrachenta").value(hasItem(DEFAULT_EMAIL_KONTRACHENTA)))
-            .andExpect(jsonPath("$.[*].numerKontrachenta").value(hasItem(DEFAULT_NUMER_KONTRACHENTA)))
-            .andExpect(jsonPath("$.[*].terminKontrachenta").value(hasItem(DEFAULT_TERMIN_KONTRACHENTA)));
+            .andExpect(jsonPath("$.[*].terminKontrachenta").value(hasItem(DEFAULT_TERMIN_KONTRACHENTA)))
+            .andExpect(jsonPath("$.[*].typKontrachenta").value(hasItem(DEFAULT_TYP_KONTRACHENTA.booleanValue())));
     }
     
     @Test
@@ -159,9 +152,8 @@ public class KontrachentResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(kontrachent.getId().intValue()))
             .andExpect(jsonPath("$.nazwaKontrachenta").value(DEFAULT_NAZWA_KONTRACHENTA))
-            .andExpect(jsonPath("$.emailKontrachenta").value(DEFAULT_EMAIL_KONTRACHENTA))
-            .andExpect(jsonPath("$.numerKontrachenta").value(DEFAULT_NUMER_KONTRACHENTA))
-            .andExpect(jsonPath("$.terminKontrachenta").value(DEFAULT_TERMIN_KONTRACHENTA));
+            .andExpect(jsonPath("$.terminKontrachenta").value(DEFAULT_TERMIN_KONTRACHENTA))
+            .andExpect(jsonPath("$.typKontrachenta").value(DEFAULT_TYP_KONTRACHENTA.booleanValue()));
     }
     @Test
     @Transactional
@@ -185,9 +177,8 @@ public class KontrachentResourceIT {
         em.detach(updatedKontrachent);
         updatedKontrachent
             .nazwaKontrachenta(UPDATED_NAZWA_KONTRACHENTA)
-            .emailKontrachenta(UPDATED_EMAIL_KONTRACHENTA)
-            .numerKontrachenta(UPDATED_NUMER_KONTRACHENTA)
-            .terminKontrachenta(UPDATED_TERMIN_KONTRACHENTA);
+            .terminKontrachenta(UPDATED_TERMIN_KONTRACHENTA)
+            .typKontrachenta(UPDATED_TYP_KONTRACHENTA);
 
         restKontrachentMockMvc.perform(put("/api/kontrachents")
             .contentType(MediaType.APPLICATION_JSON)
@@ -199,9 +190,8 @@ public class KontrachentResourceIT {
         assertThat(kontrachentList).hasSize(databaseSizeBeforeUpdate);
         Kontrachent testKontrachent = kontrachentList.get(kontrachentList.size() - 1);
         assertThat(testKontrachent.getNazwaKontrachenta()).isEqualTo(UPDATED_NAZWA_KONTRACHENTA);
-        assertThat(testKontrachent.getEmailKontrachenta()).isEqualTo(UPDATED_EMAIL_KONTRACHENTA);
-        assertThat(testKontrachent.getNumerKontrachenta()).isEqualTo(UPDATED_NUMER_KONTRACHENTA);
         assertThat(testKontrachent.getTerminKontrachenta()).isEqualTo(UPDATED_TERMIN_KONTRACHENTA);
+        assertThat(testKontrachent.isTypKontrachenta()).isEqualTo(UPDATED_TYP_KONTRACHENTA);
     }
 
     @Test

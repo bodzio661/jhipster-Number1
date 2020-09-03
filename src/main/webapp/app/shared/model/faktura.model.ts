@@ -1,8 +1,6 @@
 import { Moment } from 'moment';
 import { IKontrachent } from 'app/shared/model/kontrachent.model';
 import { Type } from 'app/shared/model/enumerations/type.model';
-import { Status } from 'app/shared/model/enumerations/status.model';
-import { Zaleglosc } from 'app/shared/model/enumerations/zaleglosc.model';
 
 export interface IFaktura {
   id?: number;
@@ -10,8 +8,8 @@ export interface IFaktura {
   kwotaFaktury?: number;
   dataFaktury?: Moment;
   typFaktury?: Type;
-  statusFaktury?: Status;
-  zalegloscFaktury?: Zaleglosc;
+  zalegloscFaktury?: boolean;
+  statusFaktury?: boolean;
   kontrachent?: IKontrachent;
 }
 
@@ -22,8 +20,11 @@ export class Faktura implements IFaktura {
     public kwotaFaktury?: number,
     public dataFaktury?: Moment,
     public typFaktury?: Type,
-    public statusFaktury?: Status,
-    public zalegloscFaktury?: Zaleglosc,
+    public zalegloscFaktury?: boolean,
+    public statusFaktury?: boolean,
     public kontrachent?: IKontrachent
-  ) {}
+  ) {
+    this.zalegloscFaktury = this.zalegloscFaktury || false;
+    this.statusFaktury = this.statusFaktury || false;
+  }
 }

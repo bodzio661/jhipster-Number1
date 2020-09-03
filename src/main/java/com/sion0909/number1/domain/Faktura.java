@@ -12,10 +12,6 @@ import java.time.LocalDate;
 
 import com.sion0909.number1.domain.enumeration.Type;
 
-import com.sion0909.number1.domain.enumeration.Status;
-
-import com.sion0909.number1.domain.enumeration.Zaleglosc;
-
 /**
  * A Faktura.
  */
@@ -36,7 +32,7 @@ public class Faktura implements Serializable {
 
     @NotNull
     @Column(name = "kwota_faktury", nullable = false)
-    private Float kwotaFaktury;
+    private Long kwotaFaktury;
 
     @NotNull
     @Column(name = "data_faktury", nullable = false)
@@ -47,14 +43,11 @@ public class Faktura implements Serializable {
     @Column(name = "typ_faktury", nullable = false)
     private Type typFaktury;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status_faktury", nullable = false)
-    private Status statusFaktury;
-
-    @Enumerated(EnumType.STRING)
     @Column(name = "zaleglosc_faktury")
-    private Zaleglosc zalegloscFaktury;
+    private Boolean zalegloscFaktury;
+
+    @Column(name = "status_faktury")
+    private Boolean statusFaktury;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "fakturas", allowSetters = true)
@@ -82,16 +75,16 @@ public class Faktura implements Serializable {
         this.numerFaktury = numerFaktury;
     }
 
-    public Float getKwotaFaktury() {
+    public Long getKwotaFaktury() {
         return kwotaFaktury;
     }
 
-    public Faktura kwotaFaktury(Float kwotaFaktury) {
+    public Faktura kwotaFaktury(Long kwotaFaktury) {
         this.kwotaFaktury = kwotaFaktury;
         return this;
     }
 
-    public void setKwotaFaktury(Float kwotaFaktury) {
+    public void setKwotaFaktury(Long kwotaFaktury) {
         this.kwotaFaktury = kwotaFaktury;
     }
 
@@ -121,30 +114,30 @@ public class Faktura implements Serializable {
         this.typFaktury = typFaktury;
     }
 
-    public Status getStatusFaktury() {
-        return statusFaktury;
-    }
-
-    public Faktura statusFaktury(Status statusFaktury) {
-        this.statusFaktury = statusFaktury;
-        return this;
-    }
-
-    public void setStatusFaktury(Status statusFaktury) {
-        this.statusFaktury = statusFaktury;
-    }
-
-    public Zaleglosc getZalegloscFaktury() {
+    public Boolean isZalegloscFaktury() {
         return zalegloscFaktury;
     }
 
-    public Faktura zalegloscFaktury(Zaleglosc zalegloscFaktury) {
+    public Faktura zalegloscFaktury(Boolean zalegloscFaktury) {
         this.zalegloscFaktury = zalegloscFaktury;
         return this;
     }
 
-    public void setZalegloscFaktury(Zaleglosc zalegloscFaktury) {
+    public void setZalegloscFaktury(Boolean zalegloscFaktury) {
         this.zalegloscFaktury = zalegloscFaktury;
+    }
+
+    public Boolean isStatusFaktury() {
+        return statusFaktury;
+    }
+
+    public Faktura statusFaktury(Boolean statusFaktury) {
+        this.statusFaktury = statusFaktury;
+        return this;
+    }
+
+    public void setStatusFaktury(Boolean statusFaktury) {
+        this.statusFaktury = statusFaktury;
     }
 
     public Kontrachent getKontrachent() {
@@ -186,8 +179,8 @@ public class Faktura implements Serializable {
             ", kwotaFaktury=" + getKwotaFaktury() +
             ", dataFaktury='" + getDataFaktury() + "'" +
             ", typFaktury='" + getTypFaktury() + "'" +
-            ", statusFaktury='" + getStatusFaktury() + "'" +
-            ", zalegloscFaktury='" + getZalegloscFaktury() + "'" +
+            ", zalegloscFaktury='" + isZalegloscFaktury() + "'" +
+            ", statusFaktury='" + isStatusFaktury() + "'" +
             "}";
     }
 }

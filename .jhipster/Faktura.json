@@ -10,7 +10,7 @@
     },
     {
       "fieldName": "kwotaFaktury",
-      "fieldType": "Float",
+      "fieldType": "Long",
       "fieldValidateRules": [
         "required"
       ]
@@ -31,17 +31,12 @@
       ]
     },
     {
-      "fieldName": "statusFaktury",
-      "fieldType": "Status",
-      "fieldValues": "Zaplacone,Nowe",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldName": "zalegloscFaktury",
+      "fieldType": "Boolean"
     },
     {
-      "fieldName": "zalegloscFaktury",
-      "fieldType": "Zaleglosc",
-      "fieldValues": "OK,Zalegla"
+      "fieldName": "statusFaktury",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [
