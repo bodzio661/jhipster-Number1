@@ -1,29 +1,20 @@
 entity Faktura {
 	numerFaktury String required,
-	kwotaFaktury Float required,
+	kwotaFaktury Long required,
     dataFaktury LocalDate required,
     typFaktury Type required,
-    statusFaktury Status required
-    zalegloscFaktury Zaleglosc
+    zalegloscFaktury Boolean,
+    statusFaktury Boolean
 }
 
 entity Kontrachent {
 	nazwaKontrachenta String,
-	emailKontrachenta String,
-	numerKontrachenta String,
 	terminKontrachenta Integer,
+    typKontrachenta Boolean
 }
 
 enum Type {
     Kosztowa, Przychodowa
-}
-
-enum Zaleglosc {
-    OK, Zalegla
-}
-
-enum Status {
-    Zaplacone, Nowe
 }
 
 relationship OneToMany {
